@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -56,7 +58,11 @@ private fun LoginScreen(
 
     Scaffold(
         bottomBar = {
-
+            Button(
+                onClick = { viewModel.doLogin("test@test.com.br", "12345") },
+            ) {
+                Text("Login")
+            }
         }
     ) { padding ->
         Column(

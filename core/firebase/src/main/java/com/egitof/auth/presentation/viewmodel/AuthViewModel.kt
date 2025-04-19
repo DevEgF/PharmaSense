@@ -2,11 +2,13 @@ package com.egitof.auth.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.egitof.auth.domain.model.AuthError
 import com.egitof.auth.domain.usecase.CurrentUserUseCase
 import com.egitof.auth.domain.usecase.LoginUseCase
 import com.egitof.auth.domain.usecase.LogoutUseCase
 import com.egitof.auth.presentation.event.AuthEvent
 import com.egitof.auth.presentation.state.AuthState
+import com.egitof.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,19 +30,16 @@ class AuthViewModel @Inject constructor(
     val event = _event.asSharedFlow()
 
     fun doLogin(email: String, password: String) {
-        _state.update {
-            it.copy(
-                isLoading = true
-            )
-        }
         viewModelScope.launch {
-            loginUseCase.invoke(email, password)
-                .onSuccess {
-                    handleSuccess()
-                }
-                .onFailure {
-                    handleFailure()
-                }
+            _state.update {
+                it.copy(
+                    isLoading = true
+                )
+            }
+            when (val result = loginUseCase(email, password)) {
+                is Resource.Error -> handleFailure(result.error)
+                is Resource.Success -> handleSuccess()
+            }
         }
     }
 
@@ -53,7 +52,9 @@ class AuthViewModel @Inject constructor(
         emitEvent(AuthEvent.Success)
     }
 
-    private fun handleFailure() {
+    //TODO handle failure create
+    private fun handleFailure(error: AuthError) {
+
         _state.update {
             it.copy(
                 isLoading = false,
