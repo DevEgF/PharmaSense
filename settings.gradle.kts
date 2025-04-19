@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "PharmaSense"
 include(":app")
- 
+include(":core:ui")

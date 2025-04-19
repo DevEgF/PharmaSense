@@ -1,4 +1,4 @@
-package com.egitof.pharmasense.ui.theme
+package com.egitof.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
@@ -28,7 +28,7 @@ val Typography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        letterSpacing = 0.5.spØ
     )
     */
 )

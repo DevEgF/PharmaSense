@@ -1,4 +1,4 @@
-package com.egitof.pharmasense.ui.theme
+package com.egitof.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
