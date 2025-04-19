@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.kotlinKsp)
 }
 
 android {
@@ -40,6 +42,10 @@ dependencies {
 
     api(platform(libs.firebase.bom))
     api(libs.bundles.firebase)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

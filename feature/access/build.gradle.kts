@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.kotlinKsp)
 }
 
 android {
@@ -50,6 +52,11 @@ dependencies {
     implementation(libs.lottie.compose)
     //SplashScreen
     implementation(libs.androidx.core.splashscreen)
+    //Hilt
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -23,6 +23,9 @@ ktorSerializationKotlinxJson = "2.3.6"
 kotlinxSerializationJson = "1.7.3"
 coreSplashscreen = "1.0.1"
 firebaseCommonKtx = "21.0.0"
+hiltAndroid = "2.52"
+hiltNavigationCompose = "1.2.0"
+ksp = "2.0.21-1.0.26"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -55,6 +58,10 @@ firebase-config = { module = "com.google.firebase:firebase-config-ktx" }
 firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+#Hilt
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 
 [bundles]
 firebase = ["firebase-common-ktx", "firebase-config", "firebase-messaging", "firebase-analytics", "firebase-bom"]
@@ -67,4 +74,6 @@ kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", versio
 google-android-libraries-mapsplatform-secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "googleAndroidLibrariesMapsplatformSecretsGradlePlugin" }
 google-service = { id = "com.google.gms.google-services", version.ref = "googleServices"}
 android-library = { id = "com.android.library", version.ref = "agp" }
+kotlinKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
 

@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
     alias(libs.plugins.google.service)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.kotlinKsp)
 }
 
 android {
@@ -73,6 +75,11 @@ dependencies {
 
     //SplashScreen
     implementation(libs.androidx.core.splashscreen)
+
+    //Hilt
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
     //Tests
     testImplementation(libs.junit)

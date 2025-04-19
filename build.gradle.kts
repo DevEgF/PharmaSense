@@ -6,4 +6,6 @@ plugins {
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin) apply false
     alias(libs.plugins.google.service) apply false
     alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlinKsp) apply false
+    alias(libs.plugins.hiltAndroid) apply false
 }
