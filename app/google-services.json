@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1094175807269",
+    "project_id": "pharmasense-7dc9c",
+    "storage_bucket": "pharmasense-7dc9c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094175807269:android:882835fe5d214bd1b62ccc",
+        "android_client_info": {
+          "package_name": "com.egitof.pharmasense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAHuk8b06ihwzT95UWAa-eB98DU7lKqRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
