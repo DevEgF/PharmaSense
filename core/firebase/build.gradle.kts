@@ -40,8 +40,9 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
-    api(platform(libs.firebase.bom))
-    api(libs.bundles.firebase)
+    //Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.bundles.firebase)
 
     //Hilt
     implementation(libs.hilt.android)

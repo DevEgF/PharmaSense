@@ -58,13 +58,21 @@ firebase-config = { module = "com.google.firebase:firebase-config-ktx" }
 firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
 #Hilt
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 
 [bundles]
-firebase = ["firebase-common-ktx", "firebase-config", "firebase-messaging", "firebase-analytics", "firebase-bom"]
+firebase = [
+    "firebase-auth-ktx",
+    "firebase-common-ktx",
+    "firebase-config",
+    "firebase-messaging",
+    "firebase-analytics",
+    "firebase-bom"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
