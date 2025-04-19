@@ -38,7 +38,16 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.material)
+
+    // Coroutines
+    implementation (libs.kotlinx.coroutines.android)
+
+    // ViewModel
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.runtime.ktx)
 
     //Firebase
     implementation(platform(libs.firebase.bom))

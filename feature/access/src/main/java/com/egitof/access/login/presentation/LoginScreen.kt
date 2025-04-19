@@ -13,21 +13,47 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.egitof.auth.presentation.viewmodel.AuthViewModel
+import androidx.compose.runtime.getValue
+import com.egitof.auth.presentation.event.AuthEvent
 import com.egitof.ui.theme.AppTheme
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun LoginScreenRouter(
-    navigateToChat: () -> Unit = {}
+    navigateToChat: () -> Unit = {},
+    navigateToFailureScreen: () -> Unit = {},
 ) {
-    LoginScreen()
+    LoginScreen(
+        navigateToChat = navigateToChat,
+        navigateToFailureScreen = navigateToFailureScreen
+    )
 }
 
 
 @Composable
-private fun LoginScreen() {
+private fun LoginScreen(
+    viewModel: AuthViewModel = hiltViewModel(),
+    navigateToChat: () -> Unit = {},
+    navigateToFailureScreen: () -> Unit = {},
+) {
+    val authState by viewModel.state.collectAsStateWithLifecycle()
+
+    LaunchedEffect(viewModel) {
+        viewModel.event.collectLatest { event ->
+            when (event) {
+                AuthEvent.Success -> navigateToChat()
+                AuthEvent.Failure -> navigateToFailureScreen()
+            }
+        }
+    }
+
     Scaffold(
         bottomBar = {
 
