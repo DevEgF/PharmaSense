@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
     alias(libs.plugins.google.service)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
@@ -46,6 +47,9 @@ android {
 
 dependencies {
     implementation(project(":core:ui"))
+    implementation(project(":core:firebase"))
+    implementation(project(":feature:access"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
@@ -56,13 +60,21 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    implementation(libs.kotlinx.coroutines.android)
+
+    implementation(libs.kotlinx.serialization.json)
+
+    // Gemini
     implementation(libs.generativeai)
 
+    //Lottie
     implementation(libs.lottie.compose)
 
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
+    //SplashScreen
+    implementation(libs.androidx.core.splashscreen)
 
+    //Tests
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

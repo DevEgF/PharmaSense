@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "PharmaSense"
 include(":app")
 include(":core:ui")
+include(":core:firebase")
+include(":feature:access")
