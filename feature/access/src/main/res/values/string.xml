@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Splash screen-->
     <string name="splash_safety_info">Mensagens seguras, criptografadas e privadas</string>
+
+    <!--Login screen-->
+    <string name="login_screen_btn">Entrar</string>
+    <string name="login_screen_title">Entre com sua conta da Central do Assinante</string>
+    <string name="login_screen_invalid_credentials">Email ou senha inválidos. Verifique se você digitou corretamente.</string>
+    <string name="login_screen_invalid_email_format">Email inválido. Verifique se você digitou corretamente.</string>
+    <string name="login_screen_empty_fields">Preencha todos os campos</string>
+    <string name="login_screen_textfield">E-mail</string>
+    <string name="login_screen_email_placeholder">Digite seu e-mail</string>
+    <string name="login_screen_password">Senha</string>
+    <string name="login_screen_password_placeholder">Digite sua senha</string>
+
+    <!--Feedbacks screen-->
+    <string name="feedback_screen_try_again">Tentar novamente</string>
+    <string name="feedback_screen_technical_problems">Estamos enfrentando dificuldades técnicas</string>
 </resources>

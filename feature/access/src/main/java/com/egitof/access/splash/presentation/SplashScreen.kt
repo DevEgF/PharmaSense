@@ -44,7 +44,7 @@ fun SplashScreenRouter(
 private fun SplashScreen() {
     Column(
         modifier = Modifier
-            .background(MaterialTheme.colorScheme.surfaceBright)
+            .background(Color.White)
             .fillMaxSize()
             .systemBarsPadding()
             .navigationBarsPadding()
