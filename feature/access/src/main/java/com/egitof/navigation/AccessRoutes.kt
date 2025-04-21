@@ -10,5 +10,7 @@ sealed class AccessRoutes {
         data object SplashScreen : AccessRoutes()
         @Serializable
         data object LoginScreen : AccessRoutes()
+        @Serializable
+        data object RecoveryPasswordScreen : AccessRoutes()
     }
 }
