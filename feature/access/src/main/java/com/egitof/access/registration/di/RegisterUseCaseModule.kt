@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RegisterUseCaseModule {
     @Provides
-    @Singleton
     fun providesRegisterUseCase(repository: RegisterRepository): RegisterUseCase {
         return RegisterUseCase(repository)
     }

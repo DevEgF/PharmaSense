@@ -5,14 +5,12 @@ import com.egitof.access.logout.domain.usecase.LogoutUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 object LogoutUseCaseModule {
     @Provides
-    @Singleton
     fun providesLogoutUseCase(repository: LogoutRepository): LogoutUseCase {
         return LogoutUseCase(repository)
     }

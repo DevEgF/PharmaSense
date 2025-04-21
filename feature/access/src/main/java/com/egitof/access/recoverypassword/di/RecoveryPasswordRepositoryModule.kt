@@ -5,12 +5,14 @@ import com.egitof.access.recoverypassword.domain.repository.RecoveryPasswordRepo
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 interface RecoveryPasswordRepositoryModule {
     @Binds
+    @Singleton
     fun bindsRecoveryPasswordRepository(
         repositoryImpl: RecoveryPasswordRepositoryImpl
     ): RecoveryPasswordRepository

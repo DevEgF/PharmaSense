@@ -1,13 +1,13 @@
 package com.egitof.access.login.domain.usecase
 
 import android.util.Patterns
-import com.egitof.access.login.domain.repository.AuthRepository
+import com.egitof.access.login.domain.repository.LoginRepository
 import com.egitof.auth.domain.model.AuthError
 import com.egitof.utils.data.Resource
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
-    private val authRepository: AuthRepository
+    private val loginRepository: LoginRepository
 ) {
     suspend operator fun invoke(email: String, password: String): Resource<Unit, AuthError> {
         when {
@@ -16,7 +16,7 @@ class LoginUseCase @Inject constructor(
             password.isBlank() -> return Resource.Error(AuthError.EmptyFields)
         }
 
-        return authRepository.login(email, password)
+        return loginRepository.login(email, password)
     }
 
     private fun isValidEmail(email: String): Boolean {
