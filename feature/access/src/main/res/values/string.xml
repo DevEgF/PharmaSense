@@ -13,6 +13,8 @@
     <string name="login_screen_email_placeholder">Digite seu e-mail</string>
     <string name="login_screen_password">Senha</string>
     <string name="login_screen_password_placeholder">Digite sua senha</string>
+    <string name="feature_forgot_password_account">Esqueceu sua senha?</string>
+    <string name="feature_forgot_password_account_action">Clique aqui!</string>
 
     <!--Feedbacks screen-->
     <string name="feedback_screen_try_again">Tentar novamente</string>

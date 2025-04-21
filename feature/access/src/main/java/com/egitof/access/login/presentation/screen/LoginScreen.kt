@@ -2,6 +2,7 @@ package com.egitof.access.login.presentation.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,7 +14,10 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -26,8 +30,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.LinkAnnotation
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.egitof.access.R
 import com.egitof.access.login.presentation.viewmodel.event.LoginEvent
@@ -43,9 +53,11 @@ import kotlinx.coroutines.flow.collectLatest
 @Composable
 fun LoginScreenRouter(
     navigateToChat: () -> Unit = {},
+    navigateToForgotPassword: () -> Unit = {}
 ) {
     LoginScreen(
         navigateToChat = navigateToChat,
+        navigateToForgotPassword = navigateToForgotPassword
     )
 }
 
@@ -53,6 +65,7 @@ fun LoginScreenRouter(
 private fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
     navigateToChat: () -> Unit = {},
+    navigateToForgotPassword: () -> Unit = {}
 ) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
 
@@ -87,8 +100,6 @@ private fun LoginScreen(
                     contentDescription = null
                 )
 
-                Spacer(modifier = Modifier.height(58.dp))
-
                 LoginEmailTextField(
                     value = uiState.email,
                     onValueChange = viewModel::onEmailChanged,
@@ -97,7 +108,7 @@ private fun LoginScreen(
                     fieldsState = uiState.fieldsState
                 )
 
-                Spacer(modifier = Modifier.height(14.dp))
+                Spacer(modifier = Modifier.height(18.dp))
 
                 LoginPasswordTextField(
                     value = uiState.password,
@@ -107,13 +118,34 @@ private fun LoginScreen(
                     fieldsState = uiState.fieldsState
                 )
 
-                Spacer(modifier = Modifier.height(88.dp))
+                Spacer(modifier = Modifier.height(48.dp))
 
                 PrimaryButton(
                     text = stringResource(R.string.login_screen_btn),
                     modifier = Modifier.padding(16.dp),
                     onClick = viewModel::doLogin,
                     isLoading = uiState.isLoading
+                )
+
+                val forgotAccountPassword = stringResource(R.string.feature_forgot_password_account)
+                val actionText = stringResource(R.string.feature_forgot_password_account_action)
+
+                Spacer(modifier = Modifier.height(18.dp))
+
+                Text(
+                    text = buildAnnotatedString {
+                        append("$forgotAccountPassword ")
+
+                        withStyle(
+                            style = SpanStyle(
+                                color = MaterialTheme.colorScheme.primary,
+                                textDecoration = TextDecoration.Underline
+                            )
+                        ) {
+                            append(actionText)
+                        }
+                    },
+                    modifier = Modifier.clickable { navigateToForgotPassword() }
                 )
             }
         }

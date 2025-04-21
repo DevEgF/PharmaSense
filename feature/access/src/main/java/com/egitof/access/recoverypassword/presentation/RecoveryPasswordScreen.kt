@@ -6,12 +6,14 @@ import androidx.compose.runtime.Composable
 fun RecoveryPasswordRouter(
     onNavigateToLogin: () -> Unit,
 ) {
-
+    RecoveryPasswordScreen(
+        navigateBack = onNavigateToLogin
+    )
 }
 
 @Composable
 private fun RecoveryPasswordScreen(
-
+    navigateBack: () -> Unit = {},
 ) {
 
 }

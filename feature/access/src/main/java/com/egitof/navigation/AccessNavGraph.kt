@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.egitof.access.login.presentation.screen.LoginScreenRouter
+import com.egitof.access.recoverypassword.presentation.RecoveryPasswordRouter
 import com.egitof.access.splash.presentation.SplashScreenRouter
 
 fun NavGraphBuilder.accessNavGraph(
@@ -20,6 +21,18 @@ fun NavGraphBuilder.accessNavGraph(
     }
 
     this.composable<AccessRoutes.Access.LoginScreen> {
-        LoginScreenRouter()
+        LoginScreenRouter(
+            navigateToForgotPassword = {
+                navController.navigate(AccessRoutes.Access.RecoveryPasswordScreen)
+            }
+        )
+    }
+
+    this.composable<AccessRoutes.Access.RecoveryPasswordScreen> {
+        RecoveryPasswordRouter(
+            onNavigateToLogin = {
+                navController.popBackStack()
+            }
+        )
     }
 }
