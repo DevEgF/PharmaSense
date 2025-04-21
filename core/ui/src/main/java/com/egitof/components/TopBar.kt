@@ -1,10 +1,12 @@
 package com.egitof.components
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -21,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -48,37 +49,41 @@ fun TopBar(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 8.dp),
+                .height(56.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.Center
         ) {
-
-            if (startIcon != null) {
-                StartIcon(
-                    imageVector = startIcon,
-                    onClick = onStartIconClick,
-                )
-            } else {
-                Spacer(modifier = Modifier.size(48.dp))
+            Box(
+                modifier = Modifier.weight(1f),
+                contentAlignment = Alignment.CenterStart
+            ) {
+                if (startIcon != null) {
+                    StartIcon(
+                        imageVector = startIcon,
+                        onClick = onStartIconClick,
+                    )
+                }
             }
 
             Text(
                 text = text,
-                style = TextStyle(
+                style = MaterialTheme.typography.titleSmall.copy(
                     color = contentColor,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = MaterialTheme.typography.titleSmall.fontSize
+                    fontWeight = FontWeight.Medium
                 ),
                 modifier = Modifier.padding(horizontal = 8.dp)
             )
 
-            if (endIcon != null) {
-                EndIcon(
-                    imageVector = endIcon,
-                    onClick = onEndIconClick,
-                )
-            } else {
-                Spacer(modifier = Modifier.size(48.dp))
+            Box(
+                modifier = Modifier.weight(1f),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                if (endIcon != null) {
+                    EndIcon(
+                        imageVector = endIcon,
+                        onClick = onEndIconClick,
+                    )
+                }
             }
         }
     }

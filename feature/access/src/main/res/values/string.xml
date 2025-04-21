@@ -16,6 +16,14 @@
     <string name="feature_forgot_password_account">Esqueceu sua senha?</string>
     <string name="feature_forgot_password_account_action">Clique aqui!</string>
 
+    <!--Recovery Password screen-->
+    <string name="recovery_screen_top_bar_title">Recuperar senha</string>
+    <string name="recovery_screen_top_bar_subtitle">Digite seu e-mail para recuperar sua senha</string>
+    <string name="recovery_screen_invalid_email_format">Email inválido. Verifique se você digitou corretamente.</string>
+    <string name="recovery_screen_empty_fields">Preencha o campo</string>
+    <string name="recovery_screen_send_email_to_recovery">Confira sua caixa de entrada. Enviamos um link para você redefinir sua senha.</string>
+    <string name="recovery_screen_btn">Enviar</string>
+
     <!--Feedbacks screen-->
     <string name="feedback_screen_try_again">Tentar novamente</string>
     <string name="feedback_screen_technical_problems">Estamos enfrentando dificuldades técnicas</string>

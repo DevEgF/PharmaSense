@@ -4,7 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.egitof.access.login.presentation.screen.LoginScreenRouter
-import com.egitof.access.recoverypassword.presentation.RecoveryPasswordRouter
+import com.egitof.access.recoverypassword.presentation.screen.RecoveryPasswordRouter
 import com.egitof.access.splash.presentation.SplashScreenRouter
 
 fun NavGraphBuilder.accessNavGraph(

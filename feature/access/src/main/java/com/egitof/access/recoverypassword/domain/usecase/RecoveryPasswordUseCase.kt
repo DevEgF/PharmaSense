@@ -10,12 +10,11 @@ class RecoveryPasswordUseCase @Inject constructor(
     private val repository: RecoveryPasswordRepository
 ) {
     suspend operator fun invoke(email: String): Resource<Unit, AuthError> {
-        when {
+        return when {
             email.isBlank() -> return Resource.Error(AuthError.EmptyFields)
             !isValidEmail(email) -> return Resource.Error(AuthError.InvalidEmailFormat)
+            else -> repository.sendPasswordResetEmail(email)
         }
-
-        return repository.sendPasswordResetEmail(email)
     }
 
     private fun isValidEmail(email: String): Boolean {
