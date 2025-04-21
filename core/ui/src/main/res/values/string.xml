@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Error template-->
+    <string name="text_template_error_internet">Sem conexão</string>
+    <string name="text_template_error_internet_desc">Verifique seu sinal de internet. Se estiver conectado no Wi-Fi, tente se reconectar.</string>
+    <string name="btn_template_error_try_again">Tente novamente</string>
+    <string name="text_template_error_server">Algo deu errado</string>
+    <string name="text_template_error_server_desc">Estamos trabalhando para resolver este problema. Volte novamente mais tarde.</string>
+</resources>

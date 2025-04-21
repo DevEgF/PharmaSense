@@ -14,10 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -27,12 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.egitof.access.login.presentation.viewmodel.LoginViewModel
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
@@ -41,10 +32,10 @@ import androidx.compose.ui.unit.dp
 import com.egitof.access.R
 import com.egitof.access.login.presentation.viewmodel.event.LoginEvent
 import com.egitof.access.login.presentation.viewmodel.state.LoginUiState
-import com.egitof.auth.domain.model.AuthError
 import com.egitof.components.PrimaryButton
 import com.egitof.components.PrimaryTextField
-import com.egitof.components.SpacerHorizontal
+import com.egitof.templates.error.variants.InternetErrorScreen
+import com.egitof.templates.error.variants.ServerErrorScreen
 import com.egitof.ui.theme.AppTheme
 import com.egitof.utils.InputState
 import kotlinx.coroutines.flow.collectLatest
@@ -74,8 +65,10 @@ private fun LoginScreen(
     }
 
     when(uiState.screenState) {
-        LoginUiState.AuthScreenState.GenericError -> TODO()
-        LoginUiState.AuthScreenState.NetworkError -> TODO()
+        LoginUiState.AuthScreenState.GenericError ->
+            ServerErrorScreen(onTryAgainClick = viewModel::doLogin)
+        LoginUiState.AuthScreenState.NetworkError ->
+            InternetErrorScreen(onTryAgainClick = viewModel::doLogin)
         LoginUiState.AuthScreenState.Idle -> {
             Column(
                 modifier = Modifier
@@ -165,7 +158,7 @@ private fun LoginPasswordTextField(
         keyboardType = KeyboardType.Password,
         imeAction = onImeAction,
         inputState = if(isLoading) InputState.Disabled else fieldsState.getPasswordTextFieldState(),
-        testTag = "text_field_login",
+        testTag = "text_field_password",
     )
 }
 
