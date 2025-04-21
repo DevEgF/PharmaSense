@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
-import com.egitof.access.login.data.AuthStateManager
+import com.egitof.access.user.data.CurrentUserStateManager
 import com.egitof.pharmasense.core.entrypoint.PharmaSenseApp
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -14,7 +14,7 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var authStateManager: AuthStateManager
+    lateinit var currentUserStateManager: CurrentUserStateManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PharmaSenseApp(
                 navController = rememberNavController(),
-                authStateManager = authStateManager
+                currentUserStateManager = currentUserStateManager
             )
         }
     }

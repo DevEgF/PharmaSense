@@ -2,7 +2,7 @@ package com.egitof.access.login.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.egitof.access.login.data.AuthStateManager
+import com.egitof.access.user.data.CurrentUserStateManager
 import com.egitof.access.login.domain.usecase.LoginUseCase
 import com.egitof.auth.domain.model.AuthError
 import com.egitof.access.login.presentation.viewmodel.event.LoginEvent
@@ -20,7 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    private val authStateManager: AuthStateManager
+    private val currentUserStateManager: CurrentUserStateManager
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(LoginUiState())
@@ -69,7 +69,7 @@ class LoginViewModel @Inject constructor(
     }
 
     private fun handleSuccess() {
-        authStateManager.apply {
+        currentUserStateManager.apply {
             isLoggedIn = true
         }
 

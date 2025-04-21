@@ -1,4 +1,4 @@
-package com.egitof.access.login.data
+package com.egitof.access.user.data
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AuthStateManager @Inject constructor(
+class CurrentUserStateManager @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ) {
     var isLoggedIn: Boolean

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.egitof.access.login.data.AuthStateManager
+import com.egitof.access.user.data.CurrentUserStateManager
 import com.egitof.navigation.AccessRoutes
 import com.egitof.navigation.accessNavGraph
 import com.egitof.pharmasense.core.navigation.extension.defaultTransitions
@@ -12,9 +12,9 @@ import com.egitof.pharmasense.core.navigation.extension.defaultTransitions
 @Composable
 fun NavGraph(
     navController: NavHostController,
-    authStateManager: AuthStateManager
+    currentUserStateManager: CurrentUserStateManager
 ) {
-    val isLoggedIn = remember { authStateManager.isLoggedIn }
+    val isLoggedIn = remember { currentUserStateManager.isLoggedIn }
 
     val initialRouter = if (isLoggedIn) {
         // TODO IMPLEMENT NAVIGATION TO CHAT HOME

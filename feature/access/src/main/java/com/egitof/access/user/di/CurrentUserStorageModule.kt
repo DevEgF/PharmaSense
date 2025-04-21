@@ -1,8 +1,8 @@
-package com.egitof.access.login.di
+package com.egitof.access.user.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.egitof.access.login.data.AuthStateManager
+import com.egitof.access.user.data.CurrentUserStateManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object StorageModule {
+object CurrentUserStorageModule {
 
     @Provides
     @Singleton
@@ -20,7 +20,7 @@ object StorageModule {
         @ApplicationContext context: Context
     ): SharedPreferences {
         return context.getSharedPreferences(
-            AuthStateManager.PREF_AUTH_STATE,
+            CurrentUserStateManager.Companion.PREF_AUTH_STATE,
             Context.MODE_PRIVATE
         )
     }
@@ -29,7 +29,7 @@ object StorageModule {
     @Singleton
     fun provideAuthStateManager(
         sharedPreferences: SharedPreferences
-    ): AuthStateManager {
-        return AuthStateManager(sharedPreferences)
+    ): CurrentUserStateManager {
+        return CurrentUserStateManager(sharedPreferences)
     }
 }
