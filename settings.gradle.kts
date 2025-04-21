@@ -23,4 +23,5 @@ rootProject.name = "PharmaSense"
 include(":app")
 include(":core:ui")
 include(":core:firebase")
+include(":core:utils")
 include(":feature:access")

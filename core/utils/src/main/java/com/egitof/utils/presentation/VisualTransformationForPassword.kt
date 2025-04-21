@@ -1,4 +1,4 @@
-package com.egitof.utils
+package com.egitof.utils.presentation
 
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation

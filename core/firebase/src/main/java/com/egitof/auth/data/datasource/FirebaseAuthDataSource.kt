@@ -2,22 +2,23 @@ package com.egitof.auth.data.datasource
 
 import com.egitof.auth.domain.model.AuthError
 import com.egitof.auth.domain.model.User
-import com.egitof.utils.Resource
+import com.egitof.utils.data.Resource
 import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
 
-class FirebaseAuthDataSource {
-    private val auth = Firebase.auth
-
+class FirebaseAuthDataSource @Inject constructor(
+    private val auth: FirebaseAuth
+) {
     suspend fun login(email: String, password: String): Resource<Unit, AuthError> {
         return try {
             auth.signInWithEmailAndPassword(email, password).await()
             Resource.Success(Unit)
-        } catch (e: Exception) {
-            Resource.Error(handleFirebaseAuthException(e))
+        } catch (exception: Exception) {
+            Resource.Error(handleFirebaseAuthException(exception))
         }
     }
 
@@ -25,8 +26,17 @@ class FirebaseAuthDataSource {
         return try {
             auth.createUserWithEmailAndPassword(email, password).await()
             Resource.Success(Unit)
-        } catch (e: Exception) {
-            Resource.Error(handleFirebaseAuthException(e))
+        } catch (exception: Exception) {
+            Resource.Error(handleFirebaseAuthException(exception))
+        }
+    }
+
+    suspend fun sendPasswordResetEmail(email: String): Resource<Unit, AuthError> {
+        return try {
+            auth.sendPasswordResetEmail(email).await()
+            Resource.Success(Unit)
+        } catch (exception: Exception) {
+            Resource.Error(handleFirebaseAuthException(exception))
         }
     }
 
@@ -43,6 +53,7 @@ class FirebaseAuthDataSource {
     private fun handleFirebaseAuthException(exception: Exception): AuthError {
         return when (exception) {
             is FirebaseAuthInvalidCredentialsException -> AuthError.InvalidCredentials(exception.message)
+            is FirebaseAuthInvalidUserException -> AuthError.InvalidCredentials(exception.message)
             is FirebaseNetworkException -> AuthError.NetworkError(exception.message)
             else -> AuthError.GenericError(exception.message)
         }
@@ -51,5 +62,4 @@ class FirebaseAuthDataSource {
     fun logout() {
         auth.signOut()
     }
-
 }

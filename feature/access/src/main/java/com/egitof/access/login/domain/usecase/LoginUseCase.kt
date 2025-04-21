@@ -3,7 +3,7 @@ package com.egitof.access.login.domain.usecase
 import android.util.Patterns
 import com.egitof.access.login.domain.repository.AuthRepository
 import com.egitof.auth.domain.model.AuthError
-import com.egitof.utils.Resource
+import com.egitof.utils.data.Resource
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(

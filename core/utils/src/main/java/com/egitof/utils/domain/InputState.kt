@@ -1,4 +1,4 @@
-package com.egitof.utils
+package com.egitof.utils.domain
 
 import androidx.compose.ui.Modifier
 

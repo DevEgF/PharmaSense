@@ -6,7 +6,7 @@ import com.egitof.access.login.domain.usecase.LoginUseCase
 import com.egitof.auth.domain.model.AuthError
 import com.egitof.access.login.presentation.viewmodel.event.LoginEvent
 import com.egitof.access.login.presentation.viewmodel.state.LoginUiState
-import com.egitof.utils.Resource
+import com.egitof.utils.data.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

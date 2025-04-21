@@ -37,7 +37,7 @@ import com.egitof.components.PrimaryTextField
 import com.egitof.templates.error.variants.InternetErrorScreen
 import com.egitof.templates.error.variants.ServerErrorScreen
 import com.egitof.ui.theme.AppTheme
-import com.egitof.utils.InputState
+import com.egitof.utils.domain.InputState
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable

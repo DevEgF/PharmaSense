@@ -62,4 +62,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(project(":core:ui"))
     implementation(project(":core:firebase"))
+    implementation(project(":core:utils"))
 }

@@ -1,4 +1,4 @@
-package com.egitof.utils
+package com.egitof.utils.data
 
 sealed class Resource<out T, out E> {
     data class Success<out T>(val data: T) : Resource<T, Nothing>()

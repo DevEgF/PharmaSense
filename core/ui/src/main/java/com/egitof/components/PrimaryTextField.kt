@@ -27,8 +27,8 @@ import androidx.compose.ui.unit.dp
 import com.egitof.ui.R
 import com.egitof.ui.theme.AppTheme
 import com.egitof.ui.theme.errorLight
-import com.egitof.utils.InputState
-import com.egitof.utils.getVisualTransformationForPassword
+import com.egitof.utils.domain.InputState
+import com.egitof.utils.presentation.getVisualTransformationForPassword
 
 @Composable
 fun PrimaryTextField(
