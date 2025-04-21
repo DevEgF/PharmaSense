@@ -2,10 +2,9 @@ package com.egitof.access.recoverypassword.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.egitof.access.login.presentation.viewmodel.state.LoginUiState
 import com.egitof.access.recoverypassword.domain.usecase.RecoveryPasswordUseCase
 import com.egitof.access.recoverypassword.presentation.viewmodel.event.RecoveryPasswordUiEvent
-import com.egitof.access.recoverypassword.presentation.viewmodel.event.RecoveryPasswordUiEvent.OnNavigateToLoginScreen
+import com.egitof.access.recoverypassword.presentation.viewmodel.event.RecoveryPasswordUiEvent.NavigateBack
 import com.egitof.access.recoverypassword.presentation.viewmodel.state.RecoveryPasswordUiState
 import com.egitof.access.recoverypassword.presentation.viewmodel.state.RecoveryPasswordUiState.RecoveryPasswordFieldsState.EmptyFields
 import com.egitof.access.recoverypassword.presentation.viewmodel.state.RecoveryPasswordUiState.RecoveryPasswordFieldsState.InvalidEmailFormat
@@ -32,7 +31,11 @@ class RecoveryPasswordViewModel @Inject constructor(
     val event = _event.asSharedFlow()
 
     fun onBackClick() {
-        emitEvent(OnNavigateToLoginScreen)
+        emitEvent(NavigateBack)
+    }
+
+    fun navigateToLoginScreen() {
+        emitEvent(RecoveryPasswordUiEvent.NavigateToLogin)
     }
 
     fun onEmailChanged(email: String) {
@@ -60,11 +63,9 @@ class RecoveryPasswordViewModel @Inject constructor(
         _state.update {
             it.copy(
                 isLoading = false,
-                screenState = RecoveryPasswordUiState.RecoveryPasswordScreenState.Idle
+                screenState = RecoveryPasswordUiState.RecoveryPasswordScreenState.Success
             )
         }
-        emitEvent(RecoveryPasswordUiEvent.ShowSuccessMessage)
-        emitEvent(RecoveryPasswordUiEvent.NavigateToLogin)
     }
 
     private fun handleFailure(error: AuthError) {

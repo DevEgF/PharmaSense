@@ -10,11 +10,11 @@ data class RecoveryPasswordUiState(
         object Default : RecoveryPasswordFieldsState
         object InvalidEmailFormat : RecoveryPasswordFieldsState
         object EmptyFields : RecoveryPasswordFieldsState
-        object InvalidCredentials : RecoveryPasswordFieldsState
     }
 
     sealed interface RecoveryPasswordScreenState {
         object Idle : RecoveryPasswordScreenState
+        object Success : RecoveryPasswordScreenState
         object NetworkError : RecoveryPasswordScreenState
         object GenericError : RecoveryPasswordScreenState
     }

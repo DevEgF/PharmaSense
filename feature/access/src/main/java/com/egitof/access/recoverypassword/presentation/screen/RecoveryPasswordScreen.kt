@@ -1,6 +1,5 @@
 package com.egitof.access.recoverypassword.presentation.screen
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,15 +12,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarDuration
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -39,43 +35,47 @@ import com.egitof.components.PrimaryTextField
 import com.egitof.components.TopBar
 import com.egitof.templates.error.variants.InternetErrorScreen
 import com.egitof.templates.error.variants.ServerErrorScreen
+import com.egitof.templates.success.SuccessScreen
 import com.egitof.ui.theme.AppTheme
 import com.egitof.utils.domain.InputState
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun RecoveryPasswordRouter(
-    onNavigateToLogin: () -> Unit,
+    navigateBack: () -> Unit,
+    navigateToLoginScreen: () -> Unit
 ) {
     RecoveryPasswordScreen(
-        navigateBack = onNavigateToLogin
+        navigateBack = navigateBack,
+        navigateToLoginScreen = navigateToLoginScreen
     )
 }
 
 @Composable
 private fun RecoveryPasswordScreen(
+    navigateToLoginScreen: () -> Unit = {},
     navigateBack: () -> Unit = {},
     viewModel: RecoveryPasswordViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.state.collectAsStateWithLifecycle()
-    val context = LocalContext.current
-    val recoveryEmailMessage = stringResource(R.string.recovery_screen_send_email_to_recovery)
 
     LaunchedEffect(viewModel) {
         viewModel.event.collectLatest { event ->
             when(event) {
-                RecoveryPasswordUiEvent.OnNavigateToLoginScreen -> navigateBack()
-                RecoveryPasswordUiEvent.ShowSuccessMessage -> {
-                    Toast.makeText(context, recoveryEmailMessage, Toast.LENGTH_SHORT).show()
-                }
-                RecoveryPasswordUiEvent.NavigateToLogin -> {
-                    navigateBack()
-                }
+                RecoveryPasswordUiEvent.NavigateBack -> navigateBack()
+                RecoveryPasswordUiEvent.NavigateToLogin -> navigateToLoginScreen()
             }
         }
     }
 
     when(uiState.screenState) {
+        RecoveryPasswordUiState.RecoveryPasswordScreenState.Success ->
+            SuccessScreen(
+                title = stringResource(R.string.recovery_screen_send_email_to_recovery),
+                onFinish = {
+                    viewModel.navigateToLoginScreen()
+                },
+            )
         RecoveryPasswordUiState.RecoveryPasswordScreenState.GenericError ->
             ServerErrorScreen(onTryAgainClick = viewModel::onSendRecoveryEmailClick)
         RecoveryPasswordUiState.RecoveryPasswordScreenState.NetworkError ->

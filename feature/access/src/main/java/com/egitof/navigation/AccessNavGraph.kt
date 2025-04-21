@@ -30,8 +30,13 @@ fun NavGraphBuilder.accessNavGraph(
 
     this.composable<AccessRoutes.Access.RecoveryPasswordScreen> {
         RecoveryPasswordRouter(
-            onNavigateToLogin = {
+            navigateBack = {
                 navController.popBackStack()
+            },
+            navigateToLoginScreen = {
+                navController.navigate(AccessRoutes.Access.LoginScreen) {
+                    popUpTo(AccessRoutes.Access.RecoveryPasswordScreen) { inclusive = true }
+                }
             }
         )
     }
