@@ -9,17 +9,17 @@ import com.egitof.access.splash.presentation.SplashScreenRouter
 fun NavGraphBuilder.accessNavGraph(
     navController: NavController
 ) {
-    this.composable<PharmaSenseRoutes.Access.SplashScreen> {
+    this.composable<AccessRoutes.Access.SplashScreen> {
         SplashScreenRouter(
             onNavigateToLogin = {
-                navController.navigate(PharmaSenseRoutes.Access.LoginScreen) {
-                    popUpTo(PharmaSenseRoutes.Access.SplashScreen) { inclusive = true }
+                navController.navigate(AccessRoutes.Access.LoginScreen) {
+                    popUpTo(AccessRoutes.Access.SplashScreen) { inclusive = true }
                 }
             }
         )
     }
 
-    this.composable<PharmaSenseRoutes.Access.LoginScreen> {
+    this.composable<AccessRoutes.Access.LoginScreen> {
         LoginScreenRouter()
     }
 }
