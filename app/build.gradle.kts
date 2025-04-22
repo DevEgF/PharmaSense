@@ -15,6 +15,19 @@ android {
     namespace = "com.egitof.pharmasense"
     compileSdk = ProjectConfig.compileSdk
 
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "API_KEY", "\"AIzaSyBix2nmNSEPGAtg2SWxHNsq972qL2AQ_nU\"")
+        }
+        release {
+            buildConfigField("String", "API_KEY", "\"AIzaSyBix2nmNSEPGAtg2SWxHNsq972qL2AQ_nU\"")
+        }
+    }
+
     defaultConfig {
         applicationId = "com.egitof.pharmasense"
         minSdk = ProjectConfig.minSdk

@@ -6,6 +6,7 @@ coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlinxCoroutinesCore = "1.9.0"
 lifecycleRuntimeKtx = "2.8.7"
 lifecycleViewmodelCompose = "2.8.7"
 activityCompose = "1.10.1"
@@ -17,23 +18,25 @@ googleServices = "4.4.2"
 lottieVersion = "6.6.6"
 appcompat = "1.7.0"
 material = "1.12.0"
+secretsGradlePlugin = "2.0.1"
 uiTooling = "1.7.8"
 kotlinxCoroutinesAndroid = "1.9.0"
-ktorSerializationKotlinxJson = "2.3.6"
+ktorSerializationKotlinxJson = "3.0.3"
 kotlinxSerializationJson = "1.7.3"
 coreSplashscreen = "1.0.1"
 firebaseCommonKtx = "21.0.0"
-hiltAndroid = "2.52"
+hiltAndroid = "2.55"
 hiltNavigationCompose = "1.2.0"
 ksp = "2.0.21-1.0.26"
-ktorClientAndroid = "2.3.6"
+ktorClientAndroid = "3.0.3"
 ktorClientAuth = "2.3.6"
 ktorClientCio = "2.3.6"
-ktorClientContentNegotiation = "2.3.6"
-ktorClientCore = "2.3.6"
-ktorClientLogging = "2.3.6"
+ktorClientContentNegotiation = "3.0.3"
+ktorClientCore = "3.0.3"
+ktorClientLogging = "3.0.3"
 ktorClientResources = "2.3.6"
 ktorClientWebsockets = "2.3.6"
+dataStoreVersion = "1.1.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -54,6 +57,7 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
@@ -61,6 +65,7 @@ generativeai = { group = "com.google.ai.client.generativeai", name = "generative
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieVersion"}
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
 #Firebase
 firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
@@ -83,6 +88,10 @@ ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "k
 ktor-client-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktorClientResources" }
 ktor-client-websockets = { module = "io.ktor:ktor-client-websockets", version.ref = "ktorClientWebsockets" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJson" }
+#DataStore
+androidx-data-store = { group = "androidx.datastore", name = "datastore", version.ref = "dataStoreVersion" }
+androidx-data-store-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStoreVersion" }
+androidx-data-store-core = { group = "androidx.datastore", name = "datastore-core", version.ref = "dataStoreVersion" }
 
 [bundles]
 firebase = [

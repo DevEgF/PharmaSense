@@ -20,6 +20,21 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        buildTypes {
+            debug {
+                buildConfigField("String", "API_KEY", "\"${properties["chat.api.key"]}\"")
+            }
+            release {
+                buildConfigField("String", "API_KEY", "\"${properties["chat.api.key"]}\"")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -53,7 +68,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
+    // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+    implementation (libs.kotlinx.coroutines.core)
 
     implementation(libs.kotlinx.serialization.json)
 
@@ -79,4 +96,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(project(":core:ui"))
+    implementation(project(":core:utils"))
 }
