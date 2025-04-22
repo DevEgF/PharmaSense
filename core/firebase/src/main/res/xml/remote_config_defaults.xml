@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>feature_flag</key>
+        <value>false</value>
+    </entry>
+    <entry>
+        <key>welcome_message</key>
+        <value>Bem-vindo ao nosso app!</value>
+    </entry>
+    <entry>
+        <key>app_version</key>
+        <value>1.0.0</value>
+    </entry>
+</defaultsMap>

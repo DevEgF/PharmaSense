@@ -19,7 +19,6 @@ appcompat = "1.7.0"
 material = "1.12.0"
 uiTooling = "1.7.8"
 kotlinxCoroutinesAndroid = "1.9.0"
-androidx-material = "1.12.0"
 ktorSerializationKotlinxJson = "2.3.6"
 kotlinxSerializationJson = "1.7.3"
 coreSplashscreen = "1.0.1"
@@ -27,10 +26,19 @@ firebaseCommonKtx = "21.0.0"
 hiltAndroid = "2.52"
 hiltNavigationCompose = "1.2.0"
 ksp = "2.0.21-1.0.26"
+ktorClientAndroid = "2.3.6"
+ktorClientAuth = "2.3.6"
+ktorClientCio = "2.3.6"
+ktorClientContentNegotiation = "2.3.6"
+ktorClientCore = "2.3.6"
+ktorClientLogging = "2.3.6"
+ktorClientResources = "2.3.6"
+ktorClientWebsockets = "2.3.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -57,14 +65,24 @@ ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref =
 #Firebase
 firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
 firebase-config = { module = "com.google.firebase:firebase-config-ktx" }
+firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebase-messaging = { module = "com.google.firebase:firebase-messaging" }
-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
 #Hilt
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
+#Ktor
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
+ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktorClientAuth" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktorClientCio" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientContentNegotiation" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientLogging" }
+ktor-client-resources = { module = "io.ktor:ktor-client-resources", version.ref = "ktorClientResources" }
+ktor-client-websockets = { module = "io.ktor:ktor-client-websockets", version.ref = "ktorClientWebsockets" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJson" }
 
 [bundles]
 firebase = [
@@ -72,7 +90,7 @@ firebase = [
     "firebase-common-ktx",
     "firebase-config",
     "firebase-messaging",
-    "firebase-analytics",
+    "firebase-analytics-ktx",
     "firebase-bom"
 ]
 
