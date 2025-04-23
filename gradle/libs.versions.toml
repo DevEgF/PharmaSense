@@ -1,5 +1,6 @@
 [versions]
 agp = "8.9.1"
+detektFormatting = "1.23.8"
 firebaseBom = "33.12.0"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
@@ -7,6 +8,7 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 kotlinxCoroutinesCore = "1.9.0"
+kotlinxCoroutinesTest = "1.9.0"
 lifecycleRuntimeKtx = "2.8.7"
 lifecycleViewmodelCompose = "2.8.7"
 activityCompose = "1.10.1"
@@ -37,11 +39,15 @@ ktorClientLogging = "3.0.3"
 ktorClientResources = "2.3.6"
 ktorClientWebsockets = "2.3.6"
 dataStoreVersion = "1.1.4"
+mockk-common = "1.13.5"
+mockk = "1.13.13"
+detekt = "1.23.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detektFormatting" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -58,6 +64,8 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
@@ -90,8 +98,11 @@ ktor-client-websockets = { module = "io.ktor:ktor-client-websockets", version.re
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJson" }
 #DataStore
 androidx-data-store = { group = "androidx.datastore", name = "datastore", version.ref = "dataStoreVersion" }
-androidx-data-store-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStoreVersion" }
+androidx-data-store-preferences = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "dataStoreVersion" }
 androidx-data-store-core = { group = "androidx.datastore", name = "datastore-core", version.ref = "dataStoreVersion" }
+#Mockk
+mockk-common = { module = "io.mockk:mockk-common" , version.ref = "mockk-common"}
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 [bundles]
 firebase = [
@@ -113,4 +124,5 @@ google-service = { id = "com.google.gms.google-services", version.ref = "googleS
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlinKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 

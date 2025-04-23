@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>FunctionNaming:BakingScreen.kt$@Composable fun BakingScreen( bakingViewModel: BakingViewModel = viewModel() )</ID>
+    <ID>FunctionNaming:BakingScreen.kt$@Preview(showSystemUi = true) @Composable fun BakingScreenPreview()</ID>
+    <ID>FunctionNaming:NavGraph.kt$@Composable fun NavGraph( navController: NavHostController, currentUserStateManager: CurrentUserStateManager )</ID>
+    <ID>FunctionNaming:PharmaSenseChat.kt$@Composable fun PharmaSenseApp( navController: NavHostController, currentUserStateManager: CurrentUserStateManager )</ID>
+    <ID>LongMethod:BakingScreen.kt$@Composable fun BakingScreen( bakingViewModel: BakingViewModel = viewModel() )</ID>
+    <ID>MagicNumber:BakingScreen.kt$0.8f</ID>
+    <ID>NewLineAtEndOfFile:AnimatedExt.kt$com.egitof.pharmasense.core.navigation.extension.AnimatedExt.kt</ID>
+    <ID>NewLineAtEndOfFile:BakingScreen.kt$com.egitof.pharmasense.BakingScreen.kt</ID>
+    <ID>NewLineAtEndOfFile:BakingViewModel.kt$com.egitof.pharmasense.BakingViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:ExampleUnitTest.kt$com.egitof.pharmasense.ExampleUnitTest.kt</ID>
+    <ID>NewLineAtEndOfFile:NavGraph.kt$com.egitof.pharmasense.core.navigation.NavGraph.kt</ID>
+    <ID>NewLineAtEndOfFile:PharmaSenseApp.kt$com.egitof.pharmasense.core.PharmaSenseApp.kt</ID>
+    <ID>NewLineAtEndOfFile:PharmaSenseChat.kt$com.egitof.pharmasense.core.entrypoint.PharmaSenseChat.kt</ID>
+    <ID>NewLineAtEndOfFile:UiState.kt$com.egitof.pharmasense.UiState.kt</ID>
+    <ID>TooGenericExceptionCaught:BakingViewModel.kt$BakingViewModel$e: Exception</ID>
+    <ID>WildcardImport:ExampleUnitTest.kt$import org.junit.Assert.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

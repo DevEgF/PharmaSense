@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.kotlinKsp)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -57,8 +58,15 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    testImplementation(libs.junit)
+    detektPlugins(libs.detekt.formatting)
+
+    testImplementation(libs.kotlin.test)
+    androidTestImplementation(libs.mockk.common)
     androidTestImplementation(libs.androidx.junit)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(project(":core:utils"))
+    testImplementation(kotlin("test"))
 }

@@ -60,6 +60,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.mockk.common)
+    androidTestImplementation(libs.mockk)
     implementation(project(":core:ui"))
     implementation(project(":core:firebase"))
     implementation(project(":core:utils"))
