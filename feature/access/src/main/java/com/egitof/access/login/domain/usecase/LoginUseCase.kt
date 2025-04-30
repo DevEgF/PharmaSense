@@ -3,17 +3,17 @@ package com.egitof.access.login.domain.usecase
 import android.util.Patterns
 import com.egitof.access.login.domain.repository.LoginRepository
 import com.egitof.auth.domain.model.AuthError
-import com.egitof.utils.data.Resource
+import com.egitof.utils.data.ResultStatus
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
     private val loginRepository: LoginRepository
 ) {
-    suspend operator fun invoke(email: String, password: String): Resource<Unit, AuthError> {
+    suspend operator fun invoke(email: String, password: String): ResultStatus<Unit, AuthError> {
         when {
-            email.isBlank() -> return Resource.Error(AuthError.EmptyFields)
-            !isValidEmail(email) -> return Resource.Error(AuthError.InvalidEmailFormat)
-            password.isBlank() -> return Resource.Error(AuthError.EmptyFields)
+            email.isBlank() -> return ResultStatus.Error(AuthError.EmptyFields)
+            !isValidEmail(email) -> return ResultStatus.Error(AuthError.InvalidEmailFormat)
+            password.isBlank() -> return ResultStatus.Error(AuthError.EmptyFields)
         }
 
         return loginRepository.login(email, password)

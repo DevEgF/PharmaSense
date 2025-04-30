@@ -2,7 +2,7 @@ package com.egitof.auth.data.datasource
 
 import com.egitof.auth.domain.model.AuthError
 import com.egitof.auth.domain.model.User
-import com.egitof.utils.data.Resource
+import com.egitof.utils.data.ResultStatus
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -13,30 +13,30 @@ import javax.inject.Inject
 class FirebaseAuthDataSource @Inject constructor(
     private val auth: FirebaseAuth
 ) {
-    suspend fun login(email: String, password: String): Resource<Unit, AuthError> {
+    suspend fun login(email: String, password: String): ResultStatus<Unit, AuthError> {
         return try {
             auth.signInWithEmailAndPassword(email, password).await()
-            Resource.Success(Unit)
+            ResultStatus.Success(Unit)
         } catch (exception: Exception) {
-            Resource.Error(handleFirebaseAuthException(exception))
+            ResultStatus.Error(handleFirebaseAuthException(exception))
         }
     }
 
-    suspend fun register(email: String, password: String): Resource<Unit, AuthError> {
+    suspend fun register(email: String, password: String): ResultStatus<Unit, AuthError> {
         return try {
             auth.createUserWithEmailAndPassword(email, password).await()
-            Resource.Success(Unit)
+            ResultStatus.Success(Unit)
         } catch (exception: Exception) {
-            Resource.Error(handleFirebaseAuthException(exception))
+            ResultStatus.Error(handleFirebaseAuthException(exception))
         }
     }
 
-    suspend fun sendPasswordResetEmail(email: String): Resource<Unit, AuthError> {
+    suspend fun sendPasswordResetEmail(email: String): ResultStatus<Unit, AuthError> {
         return try {
             auth.sendPasswordResetEmail(email).await()
-            Resource.Success(Unit)
+            ResultStatus.Success(Unit)
         } catch (exception: Exception) {
-            Resource.Error(handleFirebaseAuthException(exception))
+            ResultStatus.Error(handleFirebaseAuthException(exception))
         }
     }
 

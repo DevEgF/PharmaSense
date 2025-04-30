@@ -42,6 +42,7 @@ dataStoreVersion = "1.1.4"
 mockk-common = "1.13.5"
 mockk = "1.13.13"
 detekt = "1.23.8"
+room = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -103,6 +104,10 @@ androidx-data-store-core = { group = "androidx.datastore", name = "datastore-cor
 #Mockk
 mockk-common = { module = "io.mockk:mockk-common" , version.ref = "mockk-common"}
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+#Room
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
 [bundles]
 firebase = [
@@ -112,6 +117,10 @@ firebase = [
     "firebase-messaging",
     "firebase-analytics-ktx",
     "firebase-bom"
+]
+room = [
+    "androidx-room-ktx",
+    "androidx-room-runtime"
 ]
 
 [plugins]

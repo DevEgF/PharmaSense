@@ -9,7 +9,7 @@ import com.egitof.access.recoverypassword.presentation.viewmodel.state.RecoveryP
 import com.egitof.access.recoverypassword.presentation.viewmodel.state.RecoveryPasswordUiState.RecoveryPasswordFieldsState.EmptyFields
 import com.egitof.access.recoverypassword.presentation.viewmodel.state.RecoveryPasswordUiState.RecoveryPasswordFieldsState.InvalidEmailFormat
 import com.egitof.auth.domain.model.AuthError
-import com.egitof.utils.data.Resource
+import com.egitof.utils.data.ResultStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -53,8 +53,8 @@ class RecoveryPasswordViewModel @Inject constructor(
             }
 
             when (val result = useCase.invoke(state.value.email)) {
-                is Resource.Error -> handleFailure(result.error)
-                is Resource.Success -> handleSuccess()
+                is ResultStatus.Error -> handleFailure(result.error)
+                is ResultStatus.Success -> handleSuccess()
             }
         }
     }

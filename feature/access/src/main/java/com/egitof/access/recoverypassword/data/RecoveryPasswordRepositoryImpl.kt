@@ -3,7 +3,7 @@ package com.egitof.access.recoverypassword.data
 import com.egitof.access.recoverypassword.domain.repository.RecoveryPasswordRepository
 import com.egitof.auth.data.datasource.FirebaseAuthDataSource
 import com.egitof.auth.domain.model.AuthError
-import com.egitof.utils.data.Resource
+import com.egitof.utils.data.ResultStatus
 import com.egitof.utils.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -14,7 +14,7 @@ class RecoveryPasswordRepositoryImpl @Inject constructor(
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ): RecoveryPasswordRepository {
 
-    override suspend fun sendPasswordResetEmail(email: String): Resource<Unit, AuthError> {
+    override suspend fun sendPasswordResetEmail(email: String): ResultStatus<Unit, AuthError> {
         return withContext(ioDispatcher) {
             dataSource.sendPasswordResetEmail(email)
         }

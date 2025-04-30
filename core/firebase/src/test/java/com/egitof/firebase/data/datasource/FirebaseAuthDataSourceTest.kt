@@ -2,7 +2,7 @@ package com.egitof.firebase.data.datasource
 
 import com.egitof.auth.data.datasource.FirebaseAuthDataSource
 import com.egitof.auth.domain.model.AuthError
-import com.egitof.utils.data.Resource
+import com.egitof.utils.data.ResultStatus
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -53,7 +53,7 @@ class FirebaseAuthDataSourceTest {
         } returns mockTask
 
         val result = dataSource.login("test@example.com", "senha123")
-        assertTrue(result is Resource.Success)
+        assertTrue(result is ResultStatus.Success)
     }
 
     @Test
@@ -71,7 +71,7 @@ class FirebaseAuthDataSourceTest {
 
         val result = dataSource.register("new@example.com", "senha123")
 
-        assertTrue(result is Resource.Success)
+        assertTrue(result is ResultStatus.Success)
     }
 
     @Test
@@ -88,7 +88,7 @@ class FirebaseAuthDataSourceTest {
 
         val result = dataSource.sendPasswordResetEmail("new@example.com")
 
-        assertTrue(result is Resource.Success)
+        assertTrue(result is ResultStatus.Success)
     }
 
     @Test
@@ -126,8 +126,8 @@ class FirebaseAuthDataSourceTest {
 
         val result = dataSource.login("new@example.com", "senha123")
 
-        assertTrue(result is Resource.Error)
-        assertTrue((result as Resource.Error).error is AuthError.InvalidCredentials)
+        assertTrue(result is ResultStatus.Error)
+        assertTrue((result as ResultStatus.Error).error is AuthError.InvalidCredentials)
     }
 
     @Test
@@ -147,7 +147,7 @@ class FirebaseAuthDataSourceTest {
         } returns mockTask
 
         val result = dataSource.register("newexample.com", "senha123")
-        assertTrue(result is Resource.Error)
-        assertTrue((result as Resource.Error).error is AuthError.InvalidCredentials)
+        assertTrue(result is ResultStatus.Error)
+        assertTrue((result as ResultStatus.Error).error is AuthError.InvalidCredentials)
     }
 }
